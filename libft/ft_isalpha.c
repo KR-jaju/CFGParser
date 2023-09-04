@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cfg.h                                              :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaju <jaju@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 01:06:55 by jaju              #+#    #+#             */
-/*   Updated: 2023/09/04 15:49:35 by jaju             ###   ########.fr       */
+/*   Created: 2023/02/27 13:40:42 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 04:00:51 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CFG_H
-# define CFG_H
+#include "libft.h"
 
-
-typedef struct s_parser	t_parser;
-
-typedef struct s_parser
+int	ft_isalpha(int c)
 {
-	t_cfg	grammar;
-}t_parser;
-
-void	parser_init(t_parser *this, const char *str);
-t_node	*parser_parse(t_parser *this);
-
-#endif
+	return (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'));
+}

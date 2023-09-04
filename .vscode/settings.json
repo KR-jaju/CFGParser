@@ -4,6 +4,9 @@
 		"array": "c",
 		"string": "c",
 		"string_view": "c",
-		"vector": "c"
+		"vector": "c",
+		"cfg_private.h": "c",
+		"sstream": "c",
+		"stdint.h": "c"
 	}
 }

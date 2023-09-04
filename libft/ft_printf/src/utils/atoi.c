@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cfg.h                                              :+:      :+:    :+:   */
+/*   atoi.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaju <jaju@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 01:06:55 by jaju              #+#    #+#             */
-/*   Updated: 2023/09/04 15:49:35 by jaju             ###   ########.fr       */
+/*   Created: 2023/02/27 13:40:42 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/03/09 04:02:33 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CFG_H
-# define CFG_H
-
-
-typedef struct s_parser	t_parser;
-
-typedef struct s_parser
+int	fmt_atoi(const char **str)
 {
-	t_cfg	grammar;
-}t_parser;
+	int	n;
 
-void	parser_init(t_parser *this, const char *str);
-t_node	*parser_parse(t_parser *this);
-
-#endif
+	n = 0;
+	while ('0' <= **str && **str <= '9')
+	{
+		n *= 10;
+		n += **str - '0';
+		(*str)++;
+	}
+	return (n);
+}

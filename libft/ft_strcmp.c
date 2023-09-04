@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cfg.h                                              :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaju <jaju@student.42seoul.kr>             +#+  +:+       +#+        */
+/*   By: yeonhkim <yeonhkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 01:06:55 by jaju              #+#    #+#             */
-/*   Updated: 2023/09/04 15:49:35 by jaju             ###   ########.fr       */
+/*   Created: 2023/03/07 22:36:42 by yeonhkim          #+#    #+#             */
+/*   Updated: 2023/09/01 18:35:22 by yeonhkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CFG_H
-# define CFG_H
-
-
-typedef struct s_parser	t_parser;
-
-typedef struct s_parser
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	t_cfg	grammar;
-}t_parser;
-
-void	parser_init(t_parser *this, const char *str);
-t_node	*parser_parse(t_parser *this);
-
-#endif
+	while (*s1 || *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
+}
