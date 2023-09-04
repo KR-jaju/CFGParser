@@ -1,11 +1,12 @@
 
 #include <stdint.h>
+#include <cfg.h>
 
 #define OR 129
 #define END 130
 
 static
-int32_t	**grammar(void)
+int32_t	**cfg_grammar(void)
 {
 	static int32_t	**table = {
 		(int32_t []){~9, ~1, ~0, OR, '\0', END},
@@ -28,8 +29,49 @@ int32_t	**grammar(void)
 	return (table);
 }
 
-int32_t	**parse_cfg(const char *str)
+static
+int32_t	expr_len(int32_t *expr)
 {
+	int32_t	len;
 
+	len = 0;
+	while (expr[len] != END && expr[len] != OR)
+		len++;
+	return (len);
 }
 
+int	parse_char(const char**str_ref, char c, t_node *out)
+{
+	if (**str_ref != c)
+		return (-1);
+	//*out = malloc(sizeof(t_node));
+	out->c = c;
+	out->children = (void *)0;
+	return (0);
+}
+
+int	parse_local(const char **str_ref, int32_t **grammar, int32_t *expr, t_node *self)
+{
+	const char		*str = *str_ref;
+	t_node*const	children = malloc(expr_len(expr));
+	int				i;
+
+	i = 0;
+	while (expr[i] != END && expr[i] != OR)
+	{
+		if (expr[i] < 0)
+			if (parse_local(&str, grammar, grammar[~expr[i]], &children[i]) == -1)
+				return (free_all(children), -1);
+		else
+			if (parse_char(str_ref, (char)expr[i], &children[i]) == -1)
+				return (free_all(children), -1);
+		i++;
+	}
+	self->children = children;
+	self->c = '\0';
+}
+
+t_node	*parse(const char *str, int32_t **grammar)
+{
+	
+}
