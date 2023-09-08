@@ -3,31 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   cfg.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaju <jaju@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jaju <jaju@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 01:06:55 by jaju              #+#    #+#             */
-/*   Updated: 2023/09/05 00:30:35 by jaju             ###   ########.fr       */
+/*   Updated: 2023/09/08 13:55:17 by jaju             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CFG_H
 # define CFG_H
 
+# include <stdbool.h>
+# include <stdint.h>
+# include <libds.h>
 
-typedef struct s_parser	t_parser;
+typedef struct s_token	t_token;
+
+typedef struct s_token
+{
+	const char	*type;
+	char		*lexeme;
+}t_token;
+
+typedef struct s_scanner
+{
+	char	*str;
+	t_token	look_ahead;
+	int32_t	cursor;
+}t_scanner;
 
 typedef struct s_parser
 {
-	t_cfg	grammar;
-}t_parser;
+	
+}
 
-typedef struct s_node
-{
-	char	c;
-	t_node	*children;
-}t_node;
-
-void	parser_init(t_parser *this, const char *str);
-t_node	*parser_parse(t_parser *this);
+void	scanner_init(t_scanner *this, const char *str);
+bool	scanner_has_next(t_scanner *this);
+t_token	*scanner_peek(const t_scanner *this);
+t_token	*scanner_next(t_scanner *this);
 
 #endif

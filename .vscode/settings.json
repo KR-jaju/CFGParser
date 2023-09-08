@@ -7,6 +7,9 @@
 		"vector": "c",
 		"cfg_private.h": "c",
 		"sstream": "c",
-		"stdint.h": "c"
+		"stdint.h": "c",
+		"__locale": "c",
+		"ios": "c",
+		"libft.h": "c"
 	}
 }

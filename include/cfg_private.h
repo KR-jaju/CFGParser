@@ -33,8 +33,6 @@
 10 -> '<' 6 '>' END
 
 
-
-,
 		(int32_t []){~10, ~9, '-', '>', ~0, ~2, END},
 		(int32_t []){~3, ~9, '|', ~9, ~2, OR, ~ '\0', END},
 		(int32_t []){~4, ~9, ~3, OR, ~4, ~9, END},
@@ -53,6 +51,12 @@
 */
 
 // !! malloc 보호 없음 !!
+
+typedef struct s_grammar
+{
+	char	**non_terms;
+	
+}t_grammar;
 
 typedef struct s_node
 {
