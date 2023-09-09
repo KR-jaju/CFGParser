@@ -30,7 +30,7 @@ int	number_token(t_scanner *scanner)
 			i++;
 	}
 	return (scanner->look_ahead = (t_token){
-		"Number",
+		TK_NUMBER,
 		null_guard(ft_substr(str, 0, i))
 	}, 0);
 }

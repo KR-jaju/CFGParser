@@ -29,7 +29,7 @@ int	keyword_token(t_scanner *scanner)
 	{
 		if (ft_strncmp(str, keywords[i], ft_strlen(keywords[i])) == 0)
 			return (scanner->look_ahead = (t_token){
-				"Keyword",
+				TK_KEYWORD,
 				null_guard(ft_strdup(keywords[i]))
 			}, 0);
 		i++;
